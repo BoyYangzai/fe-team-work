@@ -1,4 +1,4 @@
-Hi！ i am yang<br>
+Hi！i am yang<br>
 A Front-end infrastructure and engineering efficiency developer. Open Source Enthusiast😊 
 
 Hello，我是洋，一名热爱技术和开源的25届准前端工程师，就读于中国矿业大学(本科)
