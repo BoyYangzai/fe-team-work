@@ -58,6 +58,7 @@ No Prettier ❌
    - 性能监控指标 C 端业务会看重这个 一般 X-FMP FCP 会比较重要一点
    - 大量动态加载的静态资源，图片、gif、视频、字体等，都可以通过 InDexDB 去做一层 Cache，有效提高请求速度
    - 合理使用 preconnect、prefetch、preload
+   - git commit message 请一定带上 type 信息,如果需要带上 emoji(一般是开源项目)，请遵循 [git message emoji 标准](https://github.com/liuchengxu/git-commit-emoji-cn)
 ### Code Style
 #### Hooks<br>
 - 与 React 原生 Hook 写法保持一致 小驼峰，返回 State 与 UpdateState
