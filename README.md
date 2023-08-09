@@ -98,6 +98,7 @@ No Prettier ❌
  Tips: Meta 团队提供了非常多的 Hooks，但是很多 Hooks 都是为 SSR 服务的，一般的业务开发都无需关心   
 #### Component<br>
   - 组件命名 - 大驼峰 文件名：大驼峰 or 连接符
+  - 组件事件以及回调函数命名应遵循 onEvent => handleEvent
   - 业务组件 - 推荐 Data(数据) 与 View(视图) 分离,用相应的 Data Hook 去 管理/创建 CP 单例<br>
     举个例子，这里有一个商业化复杂应用场景下的 Table Modal, 虽然复杂 但是极其耐用 <br> 
     具体的功能大概是：<br>
