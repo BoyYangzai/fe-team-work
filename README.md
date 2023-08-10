@@ -9,6 +9,8 @@
   一个很明显的区别就是，很多前端甚至连 Github 都不会用，更别说给出一套完整的技术方案
 
 ### TEAM WORK
+ - 如果非开源项目 or 注重 git commit history 的美观，请勿使用 squash merge，防止找不到对应的协同开发者
+ - 如果想要提交代码到协同者的分支 or 火车分支，请提交 merge request，复制 mr link 给对方，为保证代码质量，可先 CR + approve，请勿直接 push
  - 业务中尽量避免使用 //@ts-ignore //@ts-noCheck，过不去的 Lint，要么是技术不到位要么是懒 
  - ESlint Prettier 与 VScode Workspace<br>
 这里是在腾讯的时候，发现的一个工作流问题，有一些 Pipe Line 会阻止 warning 的lint error，但是我本地没有 Eslint，只有 Prettier，导致无法在开发阶段去发现并且自动 Ctrl+S 去修复<br>
