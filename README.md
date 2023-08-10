@@ -1,6 +1,12 @@
 ### Why 🤔
-   之前在字节的时候 看过剪映团队ld 曾琛 写的 剪映 性能优化，超脱于市面上所有的专栏，确实很佩服，是真正的沉淀出了经验，故在此沉淀一下我的团队和业务经验<br>
+   之前在字节的时候 看过剪映团队负责人 曾琛 写的 剪映 性能优化，超脱于市面上所有的专栏，确实很佩服，是真正的沉淀出了经验，故在此沉淀一下我的团队和业务经验<br>
    一部分是学习来自于开源社区巨佬们，另一部分是对自己待过的四个厂百度、支付宝、字节、腾讯，自己觉得最舒服的 TEAMWORK 和 Code Style 沉淀
+### Stardard ✨
+  一个职级在 2-1 到 2-2 之间(腾讯 t9)的前端，我觉得应该具备以下能力：<br>
+  1.owner 稳定 - 需求评审、风险把控、技术优化、方案调研确定、技术评审、推动改良、能够独立 onwer 一个复杂的业务项目，稳定完成需求<br>
+  2.带人 - 定制团队规范、带小型前端团队/带新人、需求分配、把控需求交付流程<br>
+  3.关注技术 - 指无论有什么样的需求，脑子里都有一套对应的方案流程<br>
+  一个很明显的区别就是，很多前端甚至连 Github 都不会用，更别说给出一套完整的技术方案
 
 ### TEAM WORK
  - 业务中尽量避免使用 //@ts-ignore //@ts-noCheck，过不去的 Lint，要么是技术不到位要么是懒 
@@ -99,6 +105,18 @@ No Prettier ❌
  Tips: Meta 团队提供了非常多的 Hooks，但是很多 Hooks 都是为 SSR 服务的，一般的业务开发都无需关心   
 #### Component<br>
   - 组件命名 - 大驼峰 文件名：大驼峰 or 连接符
+  - 类型声明原则 组件大驼峰 + Props
+> 标准 tsx 组件
+```tsx
+   // pages/Login/LoginModal/index.tsx
+   interface LoginModalProps {
+      ...
+   }
+   const LoginModal: FC<LoginModalProps> = () => <>
+      ...
+   </>
+   export default LoginModal;
+```
   - 组件事件以及回调函数命名应遵循 onEvent => handleEvent
   - 业务组件 - 推荐 Data(数据) 与 View(视图) 分离,用相应的 Data Hook 去 管理/创建 CP 单例<br>
     举个例子，这里有一个商业化复杂应用场景下的 Table Modal, 虽然复杂 但是极其耐用 <br> 
@@ -115,7 +133,7 @@ No Prettier ❌
     ...
   }
 
-  const TableModal:FC = () => {
+  const TableModal:FC<TableModalProps> = () => {
     return <> ... </>
   }
 
@@ -156,6 +174,7 @@ import type { myType} from './type.ts';
 import styles from './index.less'; 
  ```
 #### Code
+   - 避免默认导出与具名导出同时使用，会导致意外的 Bundle 体积增大
    - 避免频繁使用 useMemo、useCallback
    - 依赖超过 5 个，去掉 Hook，避免增加心智负担
    - 请将复杂业务/计算逻辑 统一抽离放在 useMemo 中
