@@ -143,14 +143,28 @@ No Prettier ❌
   }
 
   export default TableModal;
-  // components/TableModal/hooks/useTableModalData.ts
-  const useTableModalData = () => {
+  // components/TableModal/hooks/useTableModal.ts
+  const useTableModal = () => {
     const [data, setData] = useState<TableModalData>([])
     const [pagination, setPagination] = useState<PaginationInfo>({ pageIndex: 1, pageSize });
     const [tableStatus, setTableStatus] = useState<TableStatus>(TableStatus.empty)
     ... Hook with Data 
     return [data, pagination, tableStatus, setData, setPagination, setTableStatus]
   }
+
+   // Usage 伪代码
+   const Component: FC = () => {
+      const [data, pagination, tableStatus, setData, setPagination, setTableStatus] = useTableModal()
+      return <>
+         <TableModal
+         records={data}
+         status ={tableStatus}
+         pagination={pagination}
+         ...
+         />
+         ...
+      </>
+   }
 ```
 
 #### Modal State
