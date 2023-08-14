@@ -1,6 +1,6 @@
 ### Why 🤔
    之前在字节的时候 看过剪映团队负责人 曾琛 写的 剪映 性能优化，超脱于市面上所有的专栏，确实很佩服，是真正的沉淀出了经验，故在此沉淀一下我的团队和业务经验<br>
-   一部分是学习来自于开源社区巨佬们，另一部分是对自己待过的四个厂百度、支付宝、字节、腾讯，自己觉得最舒服的 TEAMWORK 和 Code Style 沉淀
+   一部分是学习来自于开源社区巨佬们的技术经验和优秀编码习惯，另一部分是沉淀出自己待过的四个厂百度、支付宝、字节、腾讯，自己觉得最舒服的 FE TEAM 和 FE Development Engineer 的业务能力标准和经验
 ### Stardard ✨
   一个职级在 2-1 到 2-2 之间(腾讯 t9)的前端，我觉得应该具备以下能力：<br>
   1.owner 稳定 - 需求评审、风险把控、技术优化、方案调研确定、技术评审、推动改良、能够独立 onwer 一个复杂的业务项目，稳定完成需求<br>
@@ -8,9 +8,11 @@
   3.关注技术 - 指无论有什么样的需求，脑子里都有一套对应的方案流程<br>
   一个很明显的区别就是，很多前端甚至连 Github 都不会用，更别说给出一套完整的技术方案
 
-### TEAM WORK
+## Front End Team Requirements(前端团队要求)
+#### Collaborative Development Specification(协同开发规范)
  - 如果非开源项目 or 注重 git commit history 的美观，请勿使用 squash merge，防止找不到对应的协同开发者
  - 如果想要提交代码到协同者的分支 or 火车分支，请提交 merge request，复制 mr link 给对方，为保证代码质量，可先 CR + approve，请勿直接 push
+#### Engineering Experience - Team Oriented(工程经验 - 团队导向)
  - 业务中尽量避免使用 //@ts-ignore //@ts-noCheck，过不去的 Lint，要么是技术不到位要么是懒 
  - ESlint Prettier 与 VScode Workspace<br>
 这里是在腾讯的时候，发现的一个工作流问题，有一些 Pipe Line 会阻止 warning 的lint error，但是我本地没有 Eslint，只有 Prettier，导致无法在开发阶段去发现并且自动 Ctrl+S 去修复<br>
@@ -68,7 +70,7 @@ No Prettier ❌
    - 大量动态加载的静态资源，图片、gif、视频、字体等，都可以通过 InDexDB 去做一层 Cache，有效提高请求速度
    - 合理使用 preconnect、prefetch、preload
    - git commit message 请一定带上 type 信息,如果需要带上 emoji(一般是开源项目)，请遵循 [git message emoji 标准](https://github.com/liuchengxu/git-commit-emoji-cn)
-### Code Style
+## Individual Front End Development Competency Requirements(前端开发工程师能力要求)
 #### Hooks<br>
 - 与 React 原生 Hook 写法保持一致 小驼峰，返回 State 与 UpdateState
 ```tsx
@@ -176,7 +178,7 @@ import useHook from './hooks/useHook';
 import type { myType} from './type.ts';
 import styles from './index.less'; 
  ```
-#### Code
+#### Proven coding experience(成熟编码经验)
    - 避免默认导出与具名导出同时使用，会导致意外的 Bundle 体积增大
    - 避免频繁使用 useMemo、useCallback
    - 依赖超过 5 个，去掉 Hook，避免增加心智负担
