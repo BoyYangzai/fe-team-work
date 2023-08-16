@@ -6,7 +6,7 @@
   1.owner 稳定 - 需求评审、风险把控、技术优化、方案调研确定、技术评审、推动改良、能够独立 onwer 一个复杂的业务项目，稳定完成需求<br>
   2.带人 - 定制团队规范、带小型前端团队/带新人、需求分配、把控需求交付流程<br>
   3.关注技术 - 指无论有什么样的需求，脑子里都有一套对应的方案流程<br>
-  一个很明显的区别就是，很多前端甚至连 Github 都不会用，更别说给出一套完整的技术方案
+  一个很明显的区别就是，很多前端甚至连 Github 都不能熟练使用，更不能指望调研给出优秀的技术方案
 
 ## Front End Team Requirements(前端团队要求)
 #### Collaborative Development Specification(协同开发规范)
@@ -193,22 +193,59 @@ import type { myType} from './type.ts';
 import styles from './index.less'; 
  ```
 #### Proven coding experience(成熟编码经验)
-   - 避免默认导出与具名导出同时使用，会导致意外的 Bundle 体积增大
-   - 避免频繁使用 useMemo、useCallback
-   - 依赖超过 5 个，去掉 Hook，避免增加心智负担
-   - 请将复杂业务/计算逻辑 统一抽离放在 useMemo 中
+   - 避免默认导出与具名导出同时使用，会导致意外的 Bundle 体积增大(特殊情况除外 如语义化的附属组件 参考 AntDesign Form)
+```tsx
+   // 错误示例❌
+   export { utilA, utilB };
+   export default Utils;
+```
+   - 习惯使用枚举 （你也不想你的代码里面一堆看不懂的 数字/字符串 来表示业务逻辑吧 1001是什么 1002是什么 1003是什么？？？）<br>
+   优点：<br>
+   1.维护十分方便，方便对应 Value 统一修改<br>
+   2.语义化、同一种类枚举类型业务逻辑更加清晰<br>
+   3.抽离复用<br>
 ```ts
+   // 错误示例❌
+   interface UserInfo {
+      type: 'normal' | 'admin' | 'onwer'
+   }
+   ...
+   if(res === 'normal') { ... }
+```
+```ts
+   // 正确示例✅
+   export enum UserType {
+      NORMAL = 'normal',
+      ADMIN = 'admin',
+      OWNER = 'owner'
+   }
+   ...
+   if(res === UserType.OWNER) { ... }
+```
+   - 避免频繁使用 useMemo、useCallback
+   - useMemo、useCallback    依赖超过 5 个，去掉 Hook，避免增加心智负担
+   - ⭐️⭐️⭐️ 请将复杂业务/计算逻辑 统一抽离放在 useMemo 中
+```ts
+   // 组件设计场景
    const mergedXXX = useMemo(()=>{
-      const XXX = ...
-      return conetext.XXX ?? XXX
+      const XXX = ... // prop
+      return context.XXX ?? XXX
    },[dep1, dep2, ...)
+
+   // 业务场景
+   const mergedTableData =  useMemo(()=>{
+      const XXX = ...
+      ... //复杂业务逻辑
+      ... //复杂业务逻辑
+      return XXX
+   },[selectedData, mergedColumns, ...)
 ```
    - 避免三元表达式嵌套
    - 注意空格，养成习惯，包括纯代码以及中英文混合使用
 ```ts
    // 这是一个关于业务 Code 的注释
 ```
-   - 在公司代码中，尽量使用 if 条件语句替代可扩展的可选链逻辑 ?
+   - 在公司代码中，尽量使用 if 条件语句替代可扩展的可选链逻辑 ? (看似麻烦 好处是代码易读懂且方便后续扩展)
 > 正确 ✅
 ```ts
    interface UserInfo {
