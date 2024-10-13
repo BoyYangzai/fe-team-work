@@ -17,7 +17,33 @@
  - ESlint Prettier 与 VScode Workspace<br>
 这里是在腾讯的时候，发现的一个工作流问题，有一些 Pipe Line 会阻止 warning 的lint error，但是我本地没有 Eslint，只有 Prettier，导致无法在开发阶段去发现并且自动 Ctrl+S 去修复<br>
 最佳实践：ESlint 在开发阶段自动读取 WorkSpace 中的配置并且 Ctrl+S 会自动去 fix 这些 warning<br>
-No Prettier ❌
+把 Prettier 变成 Eslint 的检测中 用来规范代码风格
+```bash
+prettier eslint-config-prettier eslint-plugin-prettier
+```
+```json
+// .eslintrc.json
+{
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "ignorePatterns": ["node_modules/", ".next/", "out/", "public/",".eslintrc.json"],
+}
+
+// .prettierrc
+{
+  "singleQuote": false,
+  "semi": true,
+  "trailingComma": "all",
+  "jsxSingleQuote": false
+}
+```
 ```json
 // .vscode/settings.json
 {
